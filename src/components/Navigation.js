@@ -21,9 +21,9 @@ const Navigation = (props) => {
                     <img
                     className="main-nav-logo-image"
                     src={logo}
-                    alt="Argent Bank Logo"
+                    alt="Leykaza Bank Logo"
                     />
-                    <h1 className="sr-only">Argent Bank</h1>
+                    <h1 className="sr-only">Leykaza Bank</h1>
                 </a>
                 {uid ? (
                       <div className="logger"> 
