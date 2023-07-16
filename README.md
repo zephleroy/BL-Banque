@@ -1,4 +1,4 @@
-# Bienvenue sur ARGENT BANK
+# Bienvenue sur LEYKAZA BANK
 
 Il s'agit d'une application banquaire, connectée avec une API.
 Grâce à React et la technologie des hooks, la navigation et le transfert des données est ultra rapide.
