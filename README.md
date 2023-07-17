@@ -1,4 +1,4 @@
-# Bienvenue sur LEYKAZA BANK
+# Bienvenue sur LEKAZA BANK
 
 Il s'agit d'une application banquaire, connectée avec une API.
 Grâce à React et la technologie des hooks, la navigation et le transfert des données est ultra rapide.
