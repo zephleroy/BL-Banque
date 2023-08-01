@@ -1,0 +1,54 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
+- nom : environnement Setup Node.js
+  utilise : actions/setup-node@v3.7.0
+  avec:
+    # Définissez toujours-auth dans npmrc.
+    always-auth : # facultatif, la valeur par défaut est false
+    # Version Spec de la version à utiliser. Exemples : 12.x, 10.15.1, >=10.15.0.
+    node-version : # facultatif
+    # Fichier contenant la version Spec de la version à utiliser. Exemples : .nvmrc, .node-version, .tool-versions.
+    node-version-file : # facultatif
+    # Architecture cible à utiliser par Node. Exemples : x86, x64. Utilisera l'architecture du système par défaut.
+    architecture : # facultatif
+    # Définissez cette option si vous souhaitez que l'action vérifie la dernière version disponible qui satisfait la spécification de version.
+    vérifier au plus tard : # facultatif
+    # Registre facultatif à configurer pour l'authentification. Définit le registre dans un fichier .npmrc et .yarnrc au niveau du projet, et configure auth pour lire à partir de env.NODE_AUTH_TOKEN.
+    URL de registre : # facultatif
+    # Portée facultative pour l'authentification par rapport aux registres délimités. Reviendra au propriétaire du référentiel lors de l'utilisation du registre des packages GitHub (https://npm.pkg.github.com/).
+    champ d'application : # facultatif
+    # Utilisé pour extraire les distributions de nœuds des versions de nœuds. Puisqu'il existe une valeur par défaut, celle-ci n'est généralement pas fournie par l'utilisateur. Lors de l'exécution de cette action sur github.com, la valeur par défaut est suffisante. Lorsque vous exécutez sur GHES, vous pouvez transmettre un jeton d'accès personnel pour github.com si vous rencontrez une limitation de débit.
+    jeton : # facultatif, la valeur par défaut est ${{ github.server_url == 'https://github.com' && github.token || '' }}
+    # Utilisé pour spécifier un gestionnaire de packages pour la mise en cache dans le répertoire par défaut. Valeurs prises en charge : npm, fil, pnpm.
+    cache : # facultatif
+    # Utilisé pour spécifier le chemin d'accès à un fichier de dépendance : package-lock.json, yarn.lock, etc. Prend en charge les caractères génériques ou une liste de noms de fichiers pour la mise en cache de plusieurs dépendances.
+    cache-dependency-path : # facultatif
